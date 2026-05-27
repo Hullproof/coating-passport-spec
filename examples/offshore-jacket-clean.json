@@ -1,0 +1,96 @@
+{
+  "passport_id": "00000000-0000-0000-0000-000000000001",
+  "tenant_id": "00000000-0000-0000-0000-000000000aaa",
+  "schema_version": "1.0",
+  "asset": {
+    "asset_id": "STATFJORD-A-JACKET",
+    "asset_type": "offshore_platform_jacket",
+    "material": "coated_steel",
+    "metadata": {
+      "platform_name": "Statfjord A",
+      "operator": "Equinor (example)",
+      "field": "Statfjord",
+      "year_installed": 1979,
+      "iso_12944_environment_class": "CX"
+    }
+  },
+  "inspection": {
+    "inspection_id": "00000000-0000-0000-0000-000000000002",
+    "timestamp_utc": "2026-05-15T08:30:00Z",
+    "footage_source": {
+      "type": "rov",
+      "device_metadata": {
+        "rov_model": "Triton XLR-30",
+        "depth_m": 45,
+        "inspection_method": "in-water-survey"
+      }
+    },
+    "operator": {
+      "id": "operator-jh-001",
+      "tier": "enterprise_user"
+    },
+    "duration_seconds": 4200,
+    "frame_count": 12600
+  },
+  "findings": [
+    {
+      "finding_id": "00000000-0000-0000-0000-000000000010",
+      "category": "corrosion",
+      "primary_modality": "video",
+      "severity": "minor",
+      "confidence": 0.92,
+      "n_frames_supporting": 24,
+      "image_quality_score": 0.88,
+      "location_on_asset": {
+        "coordinate_system": "platform-local",
+        "x": 12.5,
+        "y": -3.2,
+        "z": -18.0,
+        "region_label": "K-node-3-splash-zone"
+      },
+      "source_frames": [
+        "gs://hullproof-fixtures/statfjord-a/2026-05-15/frame-001247.jpg",
+        "gs://hullproof-fixtures/statfjord-a/2026-05-15/frame-001248.jpg"
+      ],
+      "ai_model_version": "hullproof-vlm-v2.1.3",
+      "human_reviewed": true,
+      "review_metadata": {
+        "reviewer_id": "reviewer-eq-005",
+        "reviewed_at": "2026-05-16T11:20:00Z",
+        "decision": "confirmed"
+      },
+      "description": "Light surface rust on K-node 3 at splash-zone interface. Mill scale flaking limited; rust grade B per ISO 8501-1.",
+      "recommended_action": "Monitor at next survey cycle. No immediate action required. Surface preparation Sa 2.5 recommended at next coating refresh per ISO 12944-9.",
+      "modality_metadata": {
+        "iso_12944_class": "CX",
+        "iso_8501_rust_grade": "B",
+        "iso_8501_prep_grade_required": "Sa2_5"
+      }
+    }
+  ],
+  "compliance": {
+    "eu_ai_act_class": "high_risk_ai_system",
+    "model_card_uri": "https://hullproof.com/model-card/vlm-v2.1.3",
+    "data_lineage_uri": "https://hullproof.com/lineage/00000000-0000-0000-0000-000000000001",
+    "review_workflow_completed": true,
+    "applicable_standards": ["ISO 12944", "ISO 8501-1", "NORSOK M-501"]
+  },
+  "history": [
+    {
+      "passport_version": 1,
+      "timestamp": "2026-05-15T08:30:00Z",
+      "change_summary": "Initial passport from RV survey 2026-05-15.",
+      "changed_by": "operator-jh-001"
+    }
+  ],
+  "interoperability": {
+    "cognite_cdf_compatible": true,
+    "osdu_asset_mapping": "osdu:wks:master-data--Platform:1.0.0",
+    "veracity_export_uri": null,
+    "knowledge_graph_uri": null,
+    "external_system_ids": {
+      "operator_asset_id": "STATFJORD-A-001"
+    }
+  },
+  "generated_at": "2026-05-15T09:14:22Z"
+}
