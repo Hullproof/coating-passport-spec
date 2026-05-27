@@ -1,6 +1,6 @@
 {
-  "passport_id": "00000000-0000-0000-0000-000000000020",
-  "tenant_id": "00000000-0000-0000-0000-000000000bbb",
+  "passport_id": "33333333-3333-4333-8333-333333333333",
+  "tenant_id": "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb",
   "schema_version": "1.0",
   "asset": {
     "asset_id": "9123456",
@@ -17,7 +17,7 @@
     }
   },
   "inspection": {
-    "inspection_id": "00000000-0000-0000-0000-000000000021",
+    "inspection_id": "44444444-4444-4444-8444-444444444444",
     "timestamp_utc": "2026-02-10T14:00:00Z",
     "footage_source": {
       "type": "drone",
@@ -35,7 +35,7 @@
   },
   "findings": [
     {
-      "finding_id": "00000000-0000-0000-0000-000000000030",
+      "finding_id": "55555555-5555-4555-8555-555555555555",
       "category": "biofouling",
       "primary_modality": "video",
       "severity": "moderate",
@@ -101,7 +101,7 @@
   "compliance": {
     "eu_ai_act_class": "high_risk_ai_system",
     "model_card_uri": "https://hullproof.com/model-card/vlm-v2.1.3",
-    "data_lineage_uri": "https://hullproof.com/lineage/00000000-0000-0000-0000-000000000020",
+    "data_lineage_uri": "https://hullproof.com/lineage/33333333-3333-4333-8333-333333333333",
     "review_workflow_completed": false,
     "applicable_standards": [
       "ISO 19030",
