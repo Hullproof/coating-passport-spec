@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://hullproof.com/schemas/coating-passport-1.0.json",
+  "$id": "https://hullproof.com/schemas/coating-passport-1.1.json",
   "title": "CoatingPassport",
-  "description": "Hullproof CoatingPassport — canonical machine-readable asset condition data product. Version 1.0. See https://github.com/Hullproof/coating-passport-spec for documentation, changelog, and governance.",
+  "description": "Hullproof CoatingPassport — canonical machine-readable asset condition data product. Version 1.1. See https://github.com/Hullproof/coating-passport-spec for documentation, changelog, and governance.",
   "type": "object",
   "properties": {
     "passport_id": {
@@ -17,7 +17,10 @@
     },
     "schema_version": {
       "type": "string",
-      "const": "1.0"
+      "enum": [
+        "1.0",
+        "1.1"
+      ]
     },
     "asset": {
       "type": "object",
@@ -40,7 +43,13 @@
             "industrial_tank",
             "subsea_structure",
             "harbor_quay",
-            "naval_hull"
+            "naval_hull",
+            "aquaculture_net_pen",
+            "aquaculture_mooring",
+            "aquaculture_feed_barge",
+            "aquaculture_ras_tank",
+            "aquaculture_closed_pen",
+            "aquaculture_offshore_pen"
           ]
         },
         "material": {
@@ -185,6 +194,8 @@
               "paint_blistering",
               "delamination",
               "foreign_object",
+              "net_damage",
+              "biofilm",
               "acoustic_anomaly",
               "vibration_anomaly",
               "telemetry_anomaly",
@@ -469,6 +480,128 @@
         "evaluation_period",
         "correction_log",
         "method",
+        "computed_at"
+      ],
+      "additionalProperties": false
+    },
+    "structural_monitoring": {
+      "type": "object",
+      "properties": {
+        "system_name": {
+          "type": "string"
+        },
+        "sensing_principle": {
+          "type": "string",
+          "enum": [
+            "fiber_optic_fbg",
+            "electrical_strain_gauge",
+            "accelerometer",
+            "virtual_estimation"
+          ]
+        },
+        "class_notation": {
+          "default": "none",
+          "type": "string",
+          "enum": [
+            "dnv_hmon",
+            "abs_hm",
+            "abs_smart_shm_tier1",
+            "abs_smart_shm_tier2",
+            "abs_smart_shm_tier3",
+            "bv_mon_hull",
+            "classnk_hmon",
+            "lr_shm",
+            "none"
+          ]
+        },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "hull_girder_stress",
+                  "used_fatigue_life",
+                  "slamming_count",
+                  "ice_load_utilization",
+                  "sloshing_load",
+                  "vibration_rms",
+                  "acceleration_peak"
+                ]
+              },
+              "value": {
+                "type": "number"
+              },
+              "unit": {
+                "type": "string"
+              },
+              "confidence": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "data_quality_score": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
+              },
+              "window_start_utc": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "window_end_utc": {
+                "type": "string",
+                "format": "date-time",
+                "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+              },
+              "exceedance": {
+                "type": "boolean"
+              },
+              "notes": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "kind",
+              "value",
+              "unit",
+              "confidence",
+              "data_quality_score",
+              "window_start_utc",
+              "window_end_utc"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "source_lineage": {
+          "default": [],
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "ingested_via": {
+          "type": "string",
+          "enum": [
+            "direct",
+            "dnv_veracity_ovd",
+            "file_upload"
+          ]
+        },
+        "computed_at": {
+          "type": "string",
+          "format": "date-time",
+          "pattern": "^(?:(?:\\d\\d[2468][048]|\\d\\d[13579][26]|\\d\\d0[48]|[02468][048]00|[13579][26]00)-02-29|\\d{4}-(?:(?:0[13578]|1[02])-(?:0[1-9]|[12]\\d|3[01])|(?:0[469]|11)-(?:0[1-9]|[12]\\d|30)|(?:02)-(?:0[1-9]|1\\d|2[0-8])))T(?:(?:[01]\\d|2[0-3]):[0-5]\\d(?::[0-5]\\d(?:\\.\\d+)?)?(?:Z))$"
+        }
+      },
+      "required": [
+        "sensing_principle",
+        "class_notation",
+        "metrics",
+        "source_lineage",
         "computed_at"
       ],
       "additionalProperties": false
