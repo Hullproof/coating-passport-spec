@@ -157,6 +157,30 @@
           "type": "integer",
           "minimum": 0,
           "maximum": 9007199254740991
+        },
+        "provenance": {
+          "type": "object",
+          "properties": {
+            "duration_seconds": {
+              "type": "string",
+              "enum": [
+                "measured",
+                "estimated",
+                "modeled",
+                "declared"
+              ]
+            },
+            "frame_count": {
+              "type": "string",
+              "enum": [
+                "measured",
+                "estimated",
+                "modeled",
+                "declared"
+              ]
+            }
+          },
+          "additionalProperties": false
         }
       },
       "required": [
