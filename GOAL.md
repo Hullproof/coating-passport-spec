@@ -16,6 +16,9 @@
 ## Parkert (innfall — ikke start uten eksplisitt ja)
 - (tom)
 
+## Prosess (felles)
+- Dormant/vedlikehold — ingen egen tavle. Overlaget (kanban/scrum/agile + DoD) gjelder for aktive bygg, se `docs/SCRUM-OG-AGILE.md` (kanonisk i epty-repoet).
+
 ## Faste regler for dette repoet
 - Bakoverkompatible endringer kun i minor; alt dokumenteres i CHANGELOG.
 
